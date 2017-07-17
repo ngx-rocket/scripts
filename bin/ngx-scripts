@@ -1,0 +1,4 @@
+#!/usr/bin/env node
+const NgxScriptsCli = require('../index');
+const cli = new NgxScriptsCli(process.argv.slice(2));
+cli.run();

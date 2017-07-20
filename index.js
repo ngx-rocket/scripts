@@ -95,7 +95,7 @@ class NgxScriptsCli {
 
   _cordova(options) {
     if (!options.fast) {
-      const buildOptions = ['build', '--'];
+      const buildOptions = ['build', '-s', '--'];
       if (options.dev) {
         buildOptions.push('--dev');
       }
@@ -103,7 +103,13 @@ class NgxScriptsCli {
         buildOptions.push('--env');
         buildOptions.push(options.env);
       }
-      child.spawnSync(options.yarn ? 'yarn' : 'npm run', buildOptions, {stdio: 'inherit'});
+      if (!options.yarn) {
+        buildOptions.unshift('run');
+      }
+      const buildResult = child.spawnSync(options.yarn ? 'yarn' : 'npm', buildOptions, {stdio: 'inherit'});
+      if (buildResult.status) {
+        this._exit(null, buildResult.status);
+      }
     }
 
     const cordovaOptions = options._.slice(1);
@@ -113,22 +119,30 @@ class NgxScriptsCli {
         cordovaOptions.push('--' + option);
       }
     });
-    child.spawnSync(`cordova`, cordovaOptions, {stdio: 'inherit'});
+    const cordovaResult = child.spawnSync(`cordova`, cordovaOptions, {stdio: 'inherit'});
+    if (cordovaResult.status) {
+      this._exit(null, cordovaResult.status);
+    }
 
-    if (options._['0'] === 'build' && options.copy) {
-      try {
-        fs.ensureDirSync(options.copy);
-        const androidPath = `platforms/android/build/outputs/apk/*-${options.release ? 'release' : 'debug'}.apk`;
-        let copied = false;
-        copied = copied || this._copy(androidPath, options.copy);
-        copied = copied || this._copy('platforms/ios/build/device/*.ipa', options.copy);
-        if (copied) {
-          console.log(`Apps copied to ${chalk.cyan(options.copy)} folder`);
-        } else {
-          throw new Error('No app builds found');
+    if (options.copy) {
+      if (options._['0'] === 'build') {
+        try {
+          fs.ensureDirSync(options.copy);
+          let copied = false;
+          const androidPath = `platforms/android/build/outputs/apk/*-${options.release ? 'release' : 'debug'}.apk`;
+          copied = copied || this._copy(androidPath, options.copy);
+          copied = copied || this._copy('platforms/ios/build/device/*.ipa', options.copy);
+          copied = copied || this._copy('platforms/ios/build/device/*.xcarchive', options.copy);
+          if (copied) {
+            console.log(`Apps copied to ${chalk.cyan(options.copy)} folder`);
+          } else {
+            throw new Error('No app builds found');
+          }
+        } catch (err) {
+          this._exit(`${chalk.red(`Error during apps copy: ${err && err.message ? err.message : err}`)}`);
         }
-      } catch (err) {
-        this._exit(`${chalk.red(`Error during apps copy: ${err && err.message ? err.message : err}`)}`);
+      } else {
+        console.warn(`${chalk.yellow('--copy')} can only used with ${chalk.cyan('cordova build')}`);
       }
     }
   }
@@ -196,7 +210,9 @@ class NgxScriptsCli {
   }
 
   _exit(error, code = 1) {
-    console.error(error);
+    if (error) {
+      console.error(error);
+    }
     process.exit(code);
   }
 }

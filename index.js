@@ -95,16 +95,13 @@ class NgxScriptsCli {
 
   _cordova(options) {
     if (!options.fast) {
-      const buildOptions = ['build', '-s', '--'];
+      const buildOptions = ['run', 'build', '-s', '--'];
       if (options.dev) {
         buildOptions.push('--dev');
       }
       if (options.env) {
         buildOptions.push('--env');
         buildOptions.push(options.env);
-      }
-      if (!options.yarn) {
-        buildOptions.unshift('run');
       }
       const buildResult = child.spawnSync(options.yarn ? 'yarn' : 'npm', buildOptions, {stdio: 'inherit'});
       if (buildResult.status) {

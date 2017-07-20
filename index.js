@@ -122,11 +122,11 @@ class NgxScriptsCli {
     }
 
     if (options.copy) {
-      if (options._['0'] === 'build') {
+      if (cordovaOptions['0'] === 'build') {
         try {
           fs.ensureDirSync(options.copy);
           let copied = false;
-          const androidPath = `platforms/android/build/outputs/apk/*-${options.release ? 'release' : 'debug'}.apk`;
+          const androidPath = `platforms/android/build/outputs/apk/*-${options.release ? 'release' : 'debug'}*.apk`;
           copied = copied || this._copy(androidPath, options.copy);
           copied = copied || this._copy('platforms/ios/build/device/*.ipa', options.copy);
           copied = copied || this._copy('platforms/ios/build/device/*.xcarchive', options.copy);

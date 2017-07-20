@@ -3,11 +3,11 @@
 /**
  * This hook copies any file (images, sound, etc) to the Android native
  * resources path, so that they can be used by native plugins.
- * The input resource path can be changed using by setting the environment
+ * The input resource path can be changed by setting the environment
  * variable ANDROID_NATIVE_RESOURCES_PATH.
  */
 
-const exec = require('child_process').exec;
+const execSync = require('child_process').execSync;
 
 const rootdir = process.argv[2];
 const isWin = /^win/.test(process.platform);
@@ -16,9 +16,9 @@ const androidResourcesPath = 'platforms/android/res/';
 
 function copyAndroidResources() {
   const command = `${isWin ? 'xcopy /S /Y' : 'cp -Rf'} ${inputPath}* ${androidResourcesPath}`;
-  process.stdout.write('Executing command: ' + command);
-  exec(command);
-  process.stdout.write('Android native resources copied');
+  process.stdout.write(`Executing command: ${command}\n`);
+  execSync(command);
+  process.stdout.write('Android native resources copied\n');
 }
 
 if (rootdir) {

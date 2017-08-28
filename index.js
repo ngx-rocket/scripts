@@ -94,6 +94,11 @@ class NgxScriptsCli {
   }
 
   _cordova(options) {
+    const spawnOptions = {
+      stdio: 'inherit',
+      shell: isWin
+    };
+
     if (!options.fast) {
       const buildOptions = ['run', 'build', '-s', '--'];
       if (options.dev) {
@@ -103,7 +108,7 @@ class NgxScriptsCli {
         buildOptions.push('--env');
         buildOptions.push(options.env);
       }
-      const buildResult = child.spawnSync(options.yarn ? 'yarn' : 'npm', buildOptions, {stdio: 'inherit'});
+      const buildResult = child.spawnSync(options.yarn ? 'yarn' : 'npm', buildOptions, spawnOptions);
       if (buildResult.status) {
         this._exit(null, buildResult.status);
       }
@@ -116,7 +121,7 @@ class NgxScriptsCli {
         cordovaOptions.push('--' + option);
       }
     });
-    const cordovaResult = child.spawnSync(`cordova`, cordovaOptions, {stdio: 'inherit'});
+    const cordovaResult = child.spawnSync(`cordova`, cordovaOptions, spawnOptions);
     if (cordovaResult.status) {
       this._exit(null, cordovaResult.status);
     }

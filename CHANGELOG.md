@@ -1,3 +1,6 @@
+# 1.0.3
+- Properly fixed extra resources copy
+
 # 1.0.2
 - Fixed extra resources copy on Windows
 

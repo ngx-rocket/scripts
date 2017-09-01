@@ -1,5 +1,8 @@
+# 1.0.2
+- Fixed extra resources copy on Windows
+
 # 1.0.1
-- Fixed `cordova` commands on Windows ()
+- Fixed `cordova` commands on Windows (https://github.com/ngx-rocket/generator-ngx-rocket/issues/117)
 
 # 1.0.0
 - Initial release

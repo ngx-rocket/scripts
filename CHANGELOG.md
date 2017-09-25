@@ -1,4 +1,4 @@
-# 1.0.4
+# 1.0.5
 - Fixed extra resources copy on OS X/Linux (https://github.com/ngx-rocket/generator-ngx-rocket/issues/137)
 
 # 1.0.3

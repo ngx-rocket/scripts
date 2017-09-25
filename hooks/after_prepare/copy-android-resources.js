@@ -16,7 +16,7 @@ const inputPath = process.env.ANDROID_NATIVE_RESOURCES_PATH || path.normalize('r
 const androidResourcesPath = path.normalize('platforms/android/res');
 
 function copyAndroidResources() {
-  const command = `${isWin ? 'xcopy /S /Y /I' : 'cp -Rfv'} "${path.join(inputPath, '.')}" "${androidResourcesPath}"`;
+  const command = `${isWin ? 'xcopy /S /Y /I' : 'cp -Rfv'} "${inputPath + path.sep}." "${androidResourcesPath}"`;
   process.stdout.write(`Copying Android native resources with command: ${command}\n`);
   execSync(command, {stdio: 'inherit'});
 }

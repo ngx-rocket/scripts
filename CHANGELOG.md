@@ -1,6 +1,7 @@
 # 1.1.0
 - Added yarn usage detection (https://github.com/ngx-rocket/generator-ngx-rocket/issues/49)
 - Fixed passing Cordova arbitrary options
+- Added `--verbose` option for Cordova
 
 # 1.0.5
 - Fixed extra resources copy on OS X/Linux (https://github.com/ngx-rocket/generator-ngx-rocket/issues/137)

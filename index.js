@@ -9,6 +9,7 @@ const asciiLogo = require('@ngx-rocket/ascii-logo');
 const pkg = require('./package.json');
 
 const isWin = /^win/.test(process.platform);
+const generator = 'generator-ngx-rocket';
 const appName = path.basename(process.argv[1]);
 const help = `${chalk.bold('Usage')} ${appName} ${chalk.blue('[command]')} [options]\n`;
 const detailedHelp = `
@@ -30,6 +31,7 @@ ${chalk.blue('cordova')} <command> [options] [-- <cordova_options>]
   --emulate         Deploy Cordova build to an emulator
   --debug           Create a Cordova debug build
   --release         Create a Cordova release build
+  --verbose         Show Cordova debug output
   --yarn            Use Yarn instead of NPM to run the ${chalk.cyan('build')} script
 
 ${chalk.blue('clean')} [--cordova] [--dist] [--path <path>]
@@ -53,15 +55,19 @@ class NgxScriptsCli {
   constructor(args) {
     this._args = args;
     this._options = minimist(args, {
-      boolean: ['help', 'fast', 'dev', 'device', 'emulate', 'debug', 'release', 'yarn', 'cordova', 'dist'],
+      boolean: ['help', 'fast', 'dev', 'device', 'emulate', 'debug', 'release', 'yarn', 'cordova', 'dist', 'verbose'],
       string: ['o', 'copy', 'env', 'path'],
-      alias: {e: 'env'}
+      alias: {e: 'env'},
+      '--': true
     });
   }
 
   run() {
     if (this._options.help) {
       return this._help(true);
+    }
+    if (this._packageManager() === 'yarn') {
+      this._options.yarn = true;
     }
     switch (this._args[0]) {
       case 'env2json':
@@ -100,7 +106,7 @@ class NgxScriptsCli {
     };
 
     if (!options.fast) {
-      const buildOptions = ['run', 'build', '-s', '--'];
+      const buildOptions = ['run', 'build'].concat(options.yarn ? [] : ['-s', '--']);
       if (options.dev) {
         buildOptions.push('--dev');
       }
@@ -116,11 +122,13 @@ class NgxScriptsCli {
 
     const cordovaOptions = options._.slice(1);
     cordovaOptions.push('--no-telemetry');
-    ['device', 'emulate', 'debug', 'release'].forEach(option => {
+    ['device', 'emulate', 'debug', 'release', 'verbose'].forEach(option => {
       if (options[option]) {
         cordovaOptions.push('--' + option);
       }
     });
+    Array.prototype.push.apply(cordovaOptions, options['--']);
+
     const cordovaResult = child.spawnSync(`cordova`, cordovaOptions, spawnOptions);
     if (cordovaResult.status) {
       this._exit(null, cordovaResult.status);
@@ -204,6 +212,17 @@ class NgxScriptsCli {
     } catch (err) {
       this._exit(`${chalk.red(`Error with ionic package: ${err && err.message ? err.message : err}`)}`);
     }
+  }
+
+  _packageManager() {
+    let pm = null;
+    try {
+      const rc = require(path.join(process.cwd(), '.yo-rc.json'));
+      pm = rc[generator].props.packageManager;
+    } catch (err) {
+      // Do nothing
+    }
+    return pm || process.env.NGX_PACKAGE_MANAGER || 'npm';
   }
 
   _help(details) {

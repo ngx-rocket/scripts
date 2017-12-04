@@ -8,9 +8,9 @@
 
 > Support scripts for ngX-Rocket projects.
 
-In order to simplify the workflow of applications generated with [ngX-Rocket CLI](https://github.com/ngx-rocket/cli)
-or [ngX-Rocket generator](https://github.com/ngx-rocket/generator-ngx-rocket), we made this repo to gather all
-additional scripts and build tools.
+In order to simplify the workflow of applications generated with
+[ngX-Rocket generator](https://github.com/ngx-rocket/generator-ngx-rocket), we made this repo to gather all additional
+scripts and build tools.
 
 Since this module is an independant package, you can even use for projects not built from ngX-Rocket if you find it
 useful.

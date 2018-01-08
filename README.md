@@ -26,11 +26,11 @@ npm install --save @ngx-rocket/scripts
 This modules provides CLI commands to be used in [NPM scripts](https://docs.npmjs.com/misc/scripts), along with some
 [Cordova hooks](https://cordova.apache.org/docs/en/latest/guide/appdev/hooks/) (see `hooks` folder).
 
-### Export environment variables to a JSON file
+### Export environment variables to a JSON or JavaScript file
 
-`ngx-scripts env2json <env_var> [<env_var2> ...] [-o <file.json>]`
+`ngx-scripts env <env_var> [<env_var2> ...] [--out <file>] [--format json|js]`
 
-Default output file is `src/environments/.env.json`.
+Default output file is `src/environments/.env.ts` with JavaScript format.
 
 ### Execute Cordova commands
 

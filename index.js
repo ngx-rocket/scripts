@@ -13,9 +13,9 @@ const generator = 'generator-ngx-rocket';
 const appName = path.basename(process.argv[1]);
 const help = `${chalk.bold('Usage')} ${appName} ${chalk.blue('[command]')} [options]\n`;
 const detailedHelp = `
-${chalk.blue('env2json')} <env_var> [<env_var2> ...] [-o <file.json>]
-  Export environment variables to a JSON file.
-  Default output file is ${chalk.cyan('src/environments/.env.json')}
+${chalk.blue('env2json')} <env_var> [<env_var2> ...] [--out <file>] [--format json|js]
+  Export environment variables to a JSON or JavaScript file.
+  Default output file is ${chalk.cyan('src/environments/.env.ts')}
 
 ${chalk.blue('cordova')} <command> [options] [-- <cordova_options>]
   Execute Cordova commands.
@@ -56,7 +56,7 @@ class NgxScriptsCli {
     this._args = args;
     this._options = minimist(args, {
       boolean: ['help', 'fast', 'dev', 'device', 'emulate', 'debug', 'release', 'yarn', 'cordova', 'dist', 'verbose'],
-      string: ['o', 'copy', 'env', 'path'],
+      string: ['out', 'format', 'copy', 'env', 'path'],
       alias: {e: 'env'},
       '--': true
     });
@@ -70,8 +70,8 @@ class NgxScriptsCli {
       this._options.yarn = true;
     }
     switch (this._args[0]) {
-      case 'env2json':
-        return this._env2json(this._options._.slice(1), this._options.o);
+      case 'env':
+        return this._env(this._options._.slice(1), this._options.out, this._options.format);
       case 'cordova':
         return this._cordova(this._options);
       case 'clean':
@@ -83,14 +83,26 @@ class NgxScriptsCli {
     }
   }
 
-  _env2json(vars, outputFile = 'src/environments/.env.json') {
+  _env(vars, outputFile = 'src/environments/.env.ts', format = 'js') {
     if (!vars.length) {
       this._exit(`${chalk.red('Missing arguments')}\n`);
     }
-    const env = JSON.stringify(vars.reduce((env, v) => {
+    let env = JSON.stringify(vars.reduce((env, v) => {
       env[v] = process.env[v];
       return env;
-    }, {}));
+    }, {}), null, 2);
+
+    if (format === 'js') {
+      // Change to single quotes
+      env = env
+        .replace(/"([^"\\]*(?:\\.[^"\\]*)*)"/g, (match, v) => {
+          const s = v
+            .replace(/'/g, '\\\'')
+            .replace(/\\"/g, '"');
+          return `'${s}'`;
+        });
+      env = `export default ${env};\n`;
+    }
 
     try {
       fs.writeFileSync(outputFile, env);

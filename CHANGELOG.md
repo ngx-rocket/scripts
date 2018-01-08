@@ -1,3 +1,6 @@
+# 2.0.0
+- BREAKING CHANGE: renamed `env2json` script to `env` and changed its default behavior to export to a `.ts` file
+
 # 1.1.0
 - Added yarn usage detection (https://github.com/ngx-rocket/generator-ngx-rocket/issues/49)
 - Fixed passing Cordova arbitrary options

@@ -1,3 +1,6 @@
+# 2.1.0
+- Added `--base-href` option that defaults to `./` for cordova builds (https://github.com/ngx-rocket/generator-ngx-rocket/issues/249)
+
 # 2.0.0
 - BREAKING CHANGE: renamed `env2json` script to `env` and changed its default behavior to export to a `.ts` file
 

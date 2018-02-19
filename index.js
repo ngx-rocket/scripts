@@ -24,6 +24,7 @@ ${chalk.blue('cordova')} <command> [options] [-- <cordova_options>]
   Any accepted Cordova option can be passed through after ${chalk.cyan('--')}.
 
   --fast            Skip Angular app rebuild
+  --base-href <ref> Change application base URL (default is ./)
   --copy <path>     Copy built apps to path (only work with ${chalk.cyan('cordova build')})
   --dev             Build Angular app in dev mode (default is prod)
   -e, --env <name>  Target environment for ${chalk.cyan('npm run build')}
@@ -56,8 +57,9 @@ class NgxScriptsCli {
     this._args = args;
     this._options = minimist(args, {
       boolean: ['help', 'fast', 'dev', 'device', 'emulate', 'debug', 'release', 'yarn', 'cordova', 'dist', 'verbose'],
-      string: ['out', 'format', 'copy', 'env', 'path'],
+      string: ['out', 'format', 'copy', 'env', 'path', 'base-href'],
       alias: {e: 'env'},
+      default: {'base-href': './'},
       '--': true
     });
   }
@@ -119,6 +121,7 @@ class NgxScriptsCli {
 
     if (!options.fast) {
       const buildOptions = ['run', 'build'].concat(options.yarn ? [] : ['-s', '--']);
+      buildOptions.push(`--base-href=${options['base-href']}`);
       if (options.dev) {
         buildOptions.push('--dev');
       }

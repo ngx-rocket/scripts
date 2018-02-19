@@ -1,6 +1,6 @@
 {
   "name": "@ngx-rocket/scripts",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Support scripts for ngX-Rocket projects",
   "repository": "ngx-rocket/scripts",
   "main": "index.js",

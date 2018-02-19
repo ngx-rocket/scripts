@@ -41,6 +41,7 @@ Any accepted Cordova option can be passed through after `--`.
 
 #### Options
 - `--fast`: Skip Angular app rebuild
+- `--base-href <ref>`: Change application base URL (default is `./`)
 - `--copy <path>`: Copy built apps to the specified path (only works with `cordova build`)
 - `--dev`: Build Angular app in `dev` mode (default is `prod`)
 - `-e, --env <name>`: Target environment for `npm run build`

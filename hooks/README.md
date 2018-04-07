@@ -10,6 +10,15 @@ See [Cordova hooks documentation](https://cordova.apache.org/docs/en/latest/guid
 
 The input resource path can be changed by setting the environment variable `ANDROID_NATIVE_RESOURCES_PATH`.
 
+**Only for `cordova` <= 7.x and `cordova-android` < 7!**
+
+When using newer cordova versions you can use the new `<resource-file>` tag like this:
+```xml
+<platform name="android">
+  <resource-file src="www/res/drawable-hdpi/yourImage.png" target="res/drawable-hdpi/yourImage.png" />
+</platform>
+```
+
 ### Usage
 
 1. Install `@ngx-rocket/script` as a development dependency: `npm install --save-dev @ngx-rocket/script`

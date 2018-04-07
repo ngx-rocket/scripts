@@ -8,12 +8,18 @@
  */
 
 const execSync = require('child_process').execSync;
+const fs = require('fs');
 const path = require('path');
 
 const rootdir = process.argv[2];
 const isWin = /^win/.test(process.platform);
 const inputPath = process.env.ANDROID_NATIVE_RESOURCES_PATH || path.normalize('resources/android/extra');
-const androidResourcesPath = path.normalize('platforms/android/res');
+let androidResourcesPath = path.normalize('platforms/android/app/src/main/res');
+
+if (!fs.existsSync(androidResourcesPath)) {
+  // For cordova-android < 7 compatibility
+  androidResourcesPath = path.normalize('platforms/android/res');
+}
 
 function copyAndroidResources() {
   const command = `${isWin ? 'xcopy /S /Y /I' : 'cp -Rfv'} "${inputPath + path.sep}." "${androidResourcesPath}"`;

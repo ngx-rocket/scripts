@@ -1,3 +1,6 @@
+# 2.2.0
+- Added compatibility with `cordova-android@7`
+
 # 2.1.0
 - Added `--base-href` option that defaults to `./` for cordova builds (https://github.com/ngx-rocket/generator-ngx-rocket/issues/249)
 

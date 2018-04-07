@@ -1,6 +1,6 @@
 {
   "name": "@ngx-rocket/scripts",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "description": "Support scripts for ngX-Rocket projects",
   "repository": "ngx-rocket/scripts",
   "main": "index.js",
@@ -9,7 +9,7 @@
   },
   "scripts": {
     "test": "eslint *.js",
-    "postpublish": "git tag -a $npm_package_version -m '$npm_package_version' && git push --tags"
+    "postpublish": "git tag -a $npm_package_version -m \"$npm_package_version\" && git push --tags"
   },
   "keywords": [
     "ngx",
@@ -30,12 +30,12 @@
   },
   "dependencies": {
     "@ngx-rocket/ascii-logo": "^1.1.0",
-    "chalk": "^2.3.1",
+    "chalk": "^2.3.2",
     "fs-extra": "^5.0.0",
     "minimist": "^1.2.0"
   },
   "devDependencies": {
-    "eslint": "^4.18.0",
+    "eslint": "^4.19.1",
     "eslint-config-xo-space": "^0.18.0"
   },
   "engines": {

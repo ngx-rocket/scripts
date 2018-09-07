@@ -1,3 +1,6 @@
+# 3.0.1
+- Fixed clean command for `angular/cli@6`
+
 # 3.0.0
 - BREAKING CHANGE: changed `--env` to `--configuration`, to match `angular-cli@6` changes
 - Fixed `--dev` option

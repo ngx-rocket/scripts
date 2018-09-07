@@ -44,7 +44,7 @@ Any accepted Cordova option can be passed through after `--`.
 - `--base-href <ref>`: Change application base URL (default is `./`)
 - `--copy <path>`: Copy built apps to the specified path (only works with `cordova build`)
 - `--dev`: Build Angular app in `dev` mode (default is `prod`)
-- `-e, --env <name>`: Target environment for `npm run build`
+- `-c, --configuration <name>`: Target Angular CLI configuration for `npm run build`
 - `--device`: Deploy Cordova build to a device
 - `--emulate`: Deploy Cordova build to an emulator
 - `--debug`: Create a Cordova debug build
@@ -59,7 +59,7 @@ Any accepted Cordova option can be passed through after `--`.
 ```bash
 ngx-scripts cordova prepare
 ngx-scripts cordova run ios --dev --debug --emulate
-ngx-scripts cordova build ios --env prod --device --release -- --developmentTeam="ABCD" --provisioningProfile="UUID"
+ngx-scripts cordova build ios --configuration production --device --release -- --developmentTeam="ABCD" --provisioningProfile="UUID"
 ````
 
 ### Clean Cordova (`platforms`, `plugins`) and dist folders

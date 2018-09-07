@@ -27,7 +27,8 @@ ${chalk.blue('cordova')} <command> [options] [-- <cordova_options>]
   --base-href <ref> Change application base URL (default is ./)
   --copy <path>     Copy built apps to path (only work with ${chalk.cyan('cordova build')})
   --dev             Build Angular app in dev mode (default is prod)
-  -e, --env <name>  Target environment for ${chalk.cyan('npm run build')}
+  -c, --configuration <name>
+                    Target Angular CLI configuration for ${chalk.cyan('npm run build')}
   --device          Deploy Cordova build to a device
   --emulate         Deploy Cordova build to an emulator
   --debug           Create a Cordova debug build
@@ -57,8 +58,8 @@ class NgxScriptsCli {
     this._args = args;
     this._options = minimist(args, {
       boolean: ['help', 'fast', 'dev', 'device', 'emulate', 'debug', 'release', 'yarn', 'cordova', 'dist', 'verbose'],
-      string: ['out', 'format', 'copy', 'env', 'path', 'base-href'],
-      alias: {e: 'env'},
+      string: ['out', 'format', 'copy', 'configuration', 'path', 'base-href'],
+      alias: {c: 'configuration'},
       default: {'base-href': './'},
       '--': true
     });
@@ -123,11 +124,11 @@ class NgxScriptsCli {
       const buildOptions = ['run', 'build'].concat(options.yarn ? [] : ['-s', '--']);
       buildOptions.push(`--base-href=${options['base-href']}`);
       if (options.dev) {
-        buildOptions.push('--dev');
+        buildOptions.push('--prod=false');
       }
-      if (options.env) {
-        buildOptions.push('--env');
-        buildOptions.push(options.env);
+      if (options.configuration) {
+        buildOptions.push('--configuration');
+        buildOptions.push(options.configuration);
       }
       const buildResult = child.spawnSync(options.yarn ? 'yarn' : 'npm', buildOptions, spawnOptions);
       if (buildResult.status) {

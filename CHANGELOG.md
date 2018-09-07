@@ -1,3 +1,8 @@
+# 3.0.0
+- BREAKING CHANGE: changed `--env` to `--configuration`, to match `angular-cli@6` changes
+- Fixed `--dev` option
+- Updated dependencies
+
 # 2.2.0
 - Added compatibility with `cordova-android@7`
 

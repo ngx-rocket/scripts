@@ -5,6 +5,7 @@ const fs = require('fs-extra');
 const child = require('child_process');
 const chalk = require('chalk');
 const minimist = require('minimist');
+const get = require('lodash.get');
 const asciiLogo = require('@ngx-rocket/ascii-logo');
 const pkg = require('./package.json');
 
@@ -201,11 +202,18 @@ class NgxScriptsCli {
     if (options.dist) {
       let angularCliConfig;
       try {
-        angularCliConfig = require(path.join(process.cwd(), '.angular-cli.json'));
+        angularCliConfig = require(path.join(process.cwd(), 'angular.json'));
       } catch (err) {
-        this._exit(`${chalk.red(`Error reading .angular-cli.json: ${err && err.message ? err.message : err}`)}`);
+        this._exit(`${chalk.red(`Error reading angular.json: ${err && err.message ? err.message : err}`)}`);
       }
-      angularCliConfig.apps.forEach(app => this._remove(app.outDir));
+      if (angularCliConfig.projects) {
+        for (const projectName in angularCliConfig.projects) {
+          const outDir = get(angularCliConfig.projects[projectName], 'architect.build.options.outputPath');
+          if (outDir) {
+            this._remove(outDir);
+          }
+        }
+      }
     }
     if (options.path) {
       fs.removeSync(options.path);

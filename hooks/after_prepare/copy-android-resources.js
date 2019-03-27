@@ -7,13 +7,15 @@
  * variable ANDROID_NATIVE_RESOURCES_PATH.
  */
 
-const execSync = require('child_process').execSync;
+const {execSync} = require('child_process');
 const fs = require('fs');
 const path = require('path');
 
 const rootdir = process.argv[2];
-const isWin = /^win/.test(process.platform);
-const inputPath = process.env.ANDROID_NATIVE_RESOURCES_PATH || path.normalize('resources/android/extra');
+const isWin = process.platform.startsWith('win');
+const inputPath =
+  process.env.ANDROID_NATIVE_RESOURCES_PATH ||
+  path.normalize('resources/android/extra');
 let androidResourcesPath = path.normalize('platforms/android/app/src/main/res');
 
 if (!fs.existsSync(androidResourcesPath)) {
@@ -22,8 +24,11 @@ if (!fs.existsSync(androidResourcesPath)) {
 }
 
 function copyAndroidResources() {
-  const command = `${isWin ? 'xcopy /S /Y /I' : 'cp -Rfv'} "${inputPath + path.sep}." "${androidResourcesPath}"`;
-  process.stdout.write(`Copying Android native resources with command: ${command}\n`);
+  const command = `${isWin ? 'xcopy /S /Y /I' : 'cp -Rfv'} "${inputPath +
+    path.sep}." "${androidResourcesPath}"`;
+  process.stdout.write(
+    `Copying Android native resources with command: ${command}\n`
+  );
   execSync(command, {stdio: 'inherit'});
 }
 

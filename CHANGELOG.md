@@ -1,3 +1,6 @@
+# 3.0.2
+- Replaced eslint by XO and updated dependencies
+
 # 3.0.1
 - Fixed clean command for `angular/cli@6`
 

@@ -1,3 +1,6 @@
+# 3.0.3
+- Allow env to add undefined env vars (fixes #8)
+
 # 3.0.2
 - Replaced eslint by XO and updated dependencies
 

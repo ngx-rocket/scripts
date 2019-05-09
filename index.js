@@ -126,7 +126,7 @@ class NgxScriptsCli {
 
     let env = JSON.stringify(
       vars.reduce((env, v) => {
-        env[v] = process.env[v];
+        env[v] = process.env[v] === undefined ? null : process.env[v];
         return env;
       }, {}),
       null,

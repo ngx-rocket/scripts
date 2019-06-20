@@ -1,3 +1,6 @@
+# 3.0.4
+- Bump dependencies and fix vulnerabilities
+
 # 3.0.3
 - Allow env to add undefined env vars (fixes #8)
 

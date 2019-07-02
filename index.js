@@ -139,7 +139,7 @@ class NgxScriptsCli {
         const s = v.replace(/'/g, "\\'").replace(/\\"/g, '"');
         return `'${s}'`;
       });
-      env = `export default ${env};\n`;
+      env = `export const env: { [s: string]: (string | null); } = ${env};\n`;
     }
 
     try {

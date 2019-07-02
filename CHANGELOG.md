@@ -1,3 +1,8 @@
+# 4.0.0
+- BREAKING CHANGE: requires Node.js version >= 8.0.0
+- BREAKING CHANGE: `env` command now generates an explicit export instead of a default export
+- BREAKING CHANGE: remove `unpin-ionic-dependencies` command, as it's no longer needed for Ionic@4
+
 # 3.0.4
 - Bump dependencies and fix vulnerabilities
 

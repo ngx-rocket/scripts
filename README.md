@@ -2,7 +2,7 @@
 
 [![NPM version](https://img.shields.io/npm/v/@ngx-rocket/scripts.svg)](https://www.npmjs.com/package/@ngx-rocket/scripts)
 [![Build status](https://img.shields.io/travis/ngx-rocket/scripts/master.svg)](https://travis-ci.org/ngx-rocket/scripts)
-![Node version](https://img.shields.io/badge/node-%3E%3D6.0.0-brightgreen.svg)
+![Node version](https://img.shields.io/node/v/@ngx-rocket/scripts.svg)
 [![XO code style](https://img.shields.io/badge/code_style-XO-5ed9c7.svg)](https://github.com/sindresorhus/xo)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
@@ -70,17 +70,6 @@ ngx-scripts cordova build ios --configuration production --device --release -- -
 - `--cordova`: Remove only Cordova folders
 - `--dist`: Remove only dist folder
 - `--path <path>`: Remove only specified path
-
-### Unpin Ionic dependencies
-
-`ngx-scripts unpin-ionic-dependencies`
-
-This removes `peerDependencies` from `ionic-angular`'s `package.json`.
-
-The Ionic team insist on fixing their dependencies to exact versions which prevents getting bugfixes and new features
-outside of their release schedule (see [this issue for example](https://github.com/ionic-team/ionic/issues/11741)).
-
-Running this allows you using higher dependencies versions that specified in Ionic without warnings all the way.
 
 # License
 

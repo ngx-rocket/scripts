@@ -1,5 +1,3 @@
-'use strict';
-
 const path = require('path');
 const child = require('child_process');
 const fs = require('fs-extra');
@@ -17,7 +15,7 @@ const help = `${chalk.bold('Usage')} ${appName} ${chalk.blue(
 )} [options]\n`;
 const detailedHelp = `
 ${chalk.blue(
-  'env2json'
+  'env'
 )} <env_var> [<env_var2> ...] [--out <file>] [--format json|js]
   Export environment variables to a JSON or JavaScript file.
   Default output file is ${chalk.cyan('src/environments/.env.ts')}
@@ -56,16 +54,6 @@ ${chalk.blue('clean')} [--cordova] [--dist] [--path <path>]
   --dist            Remove only dist folder
   --path <path>     Remove only specified path
 
-${chalk.blue('unpin-ionic-dependencies')}
-  Unpin Ionic dependencies.
-  This removes ${chalk.cyan(
-    'peerDependencies'
-  )} from ionic-angular's ${chalk.cyan('package.json')}.
-  The Ionic team insist on fixing their dependencies to exact versions which
-  prevents getting bugfixes and new features outside of their release schedule
-  (see https://github.com/ionic-team/ionic/issues/11741 for example).
-  Running this allows you using higher dependencies versions that specified in
-  Ionic without warnings all the way.
 `;
 
 class NgxScriptsCli {
@@ -112,8 +100,6 @@ class NgxScriptsCli {
         return this._cordova(this._options);
       case 'clean':
         return this._clean(this._options);
-      case 'unpin-ionic-dependencies':
-        return this._unpinIonicDependencies();
       default:
         this._help();
     }
@@ -314,37 +300,6 @@ class NgxScriptsCli {
       this._exit(
         `${chalk.red(
           `Error while removing ${path}: ${
-            error && error.message ? error.message : error
-          }`
-        )}`
-      );
-    }
-  }
-
-  _unpinIonicDependencies() {
-    try {
-      const pkgPath = path.join(
-        process.cwd(),
-        'node_modules/ionic-angular/package.json'
-      );
-      const pkg = require(pkgPath);
-      pkg.peerDependencies = {};
-
-      try {
-        fs.writeFileSync(pkgPath, JSON.stringify(pkg, null, 2));
-      } catch (error) {
-        this._exit(
-          `${chalk.red(
-            `Error writing file: ${
-              error && error.message ? error.message : error
-            }`
-          )}`
-        );
-      }
-    } catch (error) {
-      this._exit(
-        `${chalk.red(
-          `Error with ionic package: ${
             error && error.message ? error.message : error
           }`
         )}`

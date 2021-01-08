@@ -44,5 +44,10 @@
   "xo": {
     "space": true,
     "prettier": true
-  }
+  },
+  "files": [
+    "index.js",
+    "bin",
+    "hooks"
+  ]
 }

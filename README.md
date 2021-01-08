@@ -40,6 +40,7 @@ Unless the `--fast` option is provided, the Angular app is rebuilt before execut
 Any accepted Cordova option can be passed through after `--`.
 
 #### Options
+- `--app`: The name of the Angular app to build. Only useful if you have a workspace with multiples apps.
 - `--fast`: Skip Angular app rebuild
 - `--base-href <ref>`: Change application base URL (default is `./`)
 - `--copy <path>`: Copy built apps to the specified path (only works with `cordova build`)

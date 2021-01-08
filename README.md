@@ -1,7 +1,7 @@
 # :rocket: ngx-rocket/scripts
 
 [![NPM version](https://img.shields.io/npm/v/@ngx-rocket/scripts.svg)](https://www.npmjs.com/package/@ngx-rocket/scripts)
-[![Build status](https://img.shields.io/travis/ngx-rocket/scripts/master.svg)](https://travis-ci.org/ngx-rocket/scripts)
+[![Build Status](https://github.com/ngx-rocket/scripts/workflows/build/badge.svg)](https://github.com/ngx-rocket/scripts/actions)
 ![Node version](https://img.shields.io/node/v/@ngx-rocket/scripts.svg)
 [![XO code style](https://img.shields.io/badge/code_style-XO-5ed9c7.svg)](https://github.com/sindresorhus/xo)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)

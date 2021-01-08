@@ -1,3 +1,13 @@
+# [4.0.0](https://github.com/ngx-rocket/scripts/compare/3.1.0...4.0.0) (2021-01-08)
+
+
+* chore!: fix incorrect version number ([67031d4](https://github.com/ngx-rocket/scripts/commit/67031d4cd2b758d18db1f5566a895098ea238eda))
+
+
+### BREAKING CHANGES
+
+* Just to force correct release version
+
 # [3.1.0](https://github.com/ngx-rocket/scripts/compare/3.0.4...3.1.0) (2021-01-08)
 
 

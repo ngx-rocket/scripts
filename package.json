@@ -54,6 +54,10 @@
       "unicorn/no-array-reduce": "off"
     }
   },
+  "release": {
+    "extends": "semantic-release-npm-github",
+    "branches": "main"
+  },
   "files": [
     "index.js",
     "bin",

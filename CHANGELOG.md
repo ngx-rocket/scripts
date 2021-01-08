@@ -1,3 +1,26 @@
+# [3.1.0](https://github.com/ngx-rocket/scripts/compare/3.0.4...3.1.0) (2021-01-08)
+
+
+### Bug Fixes
+
+* changed env's default export to named export ([691f10c](https://github.com/ngx-rocket/scripts/commit/691f10c5ad2d3dc53e465c02045910e6642e8838))
+* make env handle null with noImplicitAny  ([fc4a71d](https://github.com/ngx-rocket/scripts/commit/fc4a71de8daff044566fff7bd7b532cd4acbd347))
+
+
+### chore
+
+* update dependencies ([d633edd](https://github.com/ngx-rocket/scripts/commit/d633eddeb96b8625877c561bc87609178f093476))
+
+
+### Features
+
+* add --app option (closes [#18](https://github.com/ngx-rocket/scripts/issues/18)) ([77e951d](https://github.com/ngx-rocket/scripts/commit/77e951dc49ed897866a61d9bb51759356e0a2f4a))
+
+
+### BREAKING CHANGES
+
+* requires Node.js version >= 10.0.0
+
 # 4.0.0
 - BREAKING CHANGE: requires Node.js version >= 8.0.0
 - BREAKING CHANGE: `env` command now generates an explicit export instead of a default export

@@ -173,7 +173,7 @@ class NgxScriptsCli {
 
     const cordovaOptions = options._.slice(1);
     cordovaOptions.push('--no-telemetry');
-    ['device', 'emulate', 'debug', 'release', 'verbose'].forEach(option => {
+    ['device', 'emulate', 'debug', 'release', 'verbose'].forEach((option) => {
       if (options[option]) {
         cordovaOptions.push('--' + option);
       }
@@ -243,7 +243,7 @@ class NgxScriptsCli {
         stdio: 'ignore'
       });
       return true;
-    } catch (error) {
+    } catch {
       return false;
     }
   }
@@ -312,7 +312,7 @@ class NgxScriptsCli {
     try {
       const rc = require(path.join(process.cwd(), '.yo-rc.json'));
       pm = rc[generator].props.packageManager;
-    } catch (error) {
+    } catch {
       // Do nothing
     }
 

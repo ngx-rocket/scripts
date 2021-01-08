@@ -8,7 +8,9 @@
     "ngx-scripts": "./bin/ngx-scripts"
   },
   "scripts": {
-    "test": "xo",
+    "lint": "xo \"*.js\" \"bin/*.js\"",
+    "lint:fix": "npm run lint -s -- --fix",
+    "test": "npm run lint -s",
     "postpublish": "git tag -a $npm_package_version -m \"$npm_package_version\" && git push --tags"
   },
   "keywords": [
@@ -33,7 +35,7 @@
     "chalk": "^4.1.0",
     "fs-extra": "^9.0.1",
     "lodash.get": "^4.4.2",
-    "minimist": "^1.2.5"
+    "minimist": "^1.2.5",
   },
   "devDependencies": {
     "xo": "^0.37.1"
@@ -43,7 +45,10 @@
   },
   "xo": {
     "space": true,
-    "prettier": true
+    "prettier": true,
+    "rules": {
+      "unicorn/no-array-reduce": "off"
+    }
   },
   "files": [
     "index.js",

@@ -16,7 +16,7 @@ const help = `${chalk.bold('Usage')} ${appName} ${chalk.blue(
 const detailedHelp = `
 ${chalk.blue(
   'env'
-)} <env_var> [<env_var2> ...] [--out <file>] [--format json|js] [--preserveJson]
+)} <env_var> [<env_var2> ...] [--out <file>] [--format json|js] [--parseJson]
   Export environment variables to a JSON or JavaScript file.
   Default output file is ${chalk.cyan('src/environments/.env.ts')}
 
@@ -73,7 +73,7 @@ class NgxScriptsCli {
         'cordova',
         'dist',
         'verbose',
-        'preserveJson'
+        'parseJson'
       ],
       string: [
         'out',
@@ -105,7 +105,7 @@ class NgxScriptsCli {
           this._options._.slice(1),
           this._options.out,
           this._options.format,
-          this._options.preserveJson
+          this._options.parseJson
         );
       case 'cordova':
         return this._cordova(this._options);
@@ -120,7 +120,7 @@ class NgxScriptsCli {
     vars,
     outputFile = 'src/environments/.env.ts',
     format = 'js',
-    preserveJson = false
+    parseJson = false
   ) {
     if (vars.length === 0) {
       this._exit(`${chalk.red('Missing arguments')}\n`);
@@ -129,7 +129,7 @@ class NgxScriptsCli {
     let env = JSON.stringify(
       vars.reduce((env, v) => {
         env[v] = process.env[v] === undefined ? null : process.env[v];
-        if (preserveJson) {
+        if (parseJson) {
           try {
             env[v] = JSON.parse(env[v]);
           } catch {}
@@ -148,7 +148,7 @@ class NgxScriptsCli {
         return `'${s}'`;
       });
       env = `export const env: { [s: string]: (${
-        preserveJson ? `any` : `string`
+        parseJson ? `any` : `string`
       } | null); } = ${env};\n`;
     }
 

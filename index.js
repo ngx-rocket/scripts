@@ -73,7 +73,7 @@ class NgxScriptsCli {
         'cordova',
         'dist',
         'verbose',
-        'parseJson'
+        'parse-json'
       ],
       string: [
         'out',

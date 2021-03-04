@@ -28,7 +28,7 @@ This modules provides CLI commands to be used in [NPM scripts](https://docs.npmj
 
 ### Export environment variables to a JSON or JavaScript file
 
-`ngx-scripts env <env_var> [<env_var2> ...] [--out <file>] [--format json|js] [--parseJson]`
+`ngx-scripts env <env_var> [<env_var2> ...] [--out <file>] [--format json|js] [--parse-json]`
 
 Default output file is `src/environments/.env.ts` with JavaScript format.
 

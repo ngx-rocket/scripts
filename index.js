@@ -16,7 +16,7 @@ const help = `${chalk.bold('Usage')} ${appName} ${chalk.blue(
 const detailedHelp = `
 ${chalk.blue(
   'env'
-)} <env_var> [<env_var2> ...] [--out <file>] [--format json|js] [--parseJson]
+)} <env_var> [<env_var2> ...] [--out <file>] [--format json|js] [--parse-json]
   Export environment variables to a JSON or JavaScript file.
   Default output file is ${chalk.cyan('src/environments/.env.ts')}
 

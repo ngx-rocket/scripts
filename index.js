@@ -105,7 +105,7 @@ class NgxScriptsCli {
           this._options._.slice(1),
           this._options.out,
           this._options.format,
-          this._options.parseJson
+          this._options['parse-json']
         );
       case 'cordova':
         return this._cordova(this._options);

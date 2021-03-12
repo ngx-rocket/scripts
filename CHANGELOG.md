@@ -1,3 +1,10 @@
+# [5.1.0](https://github.com/ngx-rocket/scripts/compare/5.0.0...5.1.0) (2021-03-12)
+
+
+### Features
+
+* add option to parse JSON in environment variables ([#24](https://github.com/ngx-rocket/scripts/issues/24)) ([7f2c532](https://github.com/ngx-rocket/scripts/commit/7f2c532169c57f7a5c3bc706bad38bdb437dffc7))
+
 # [5.0.0](https://github.com/ngx-rocket/scripts/compare/4.0.1...5.0.0) (2021-01-08)
 
 

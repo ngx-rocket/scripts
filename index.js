@@ -20,6 +20,9 @@ ${chalk.blue(
   Export environment variables to a JSON or JavaScript file.
   Default output file is ${chalk.cyan('src/environments/.env.ts')}
 
+  --parse-json      If an environment variable's value is parsable JSON,
+                    it generates an object for it in output file.
+
 ${chalk.blue('cordova')} <command> [options] [-- <cordova_options>]
   Execute Cordova commands.
   Unless the ${chalk.cyan('--fast')} option is provided, the Angular app is

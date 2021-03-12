@@ -28,7 +28,7 @@ This modules provides CLI commands to be used in [NPM scripts](https://docs.npmj
 
 ### Export environment variables to a JSON or JavaScript file
 
-`ngx-scripts env <env_var> [<env_var2> ...] [--out <file>] [--format json|js]`
+`ngx-scripts env <env_var> [<env_var2> ...] [--out <file>] [--format json|js] [--parse-json]`
 
 Default output file is `src/environments/.env.ts` with JavaScript format.
 
@@ -52,6 +52,7 @@ Any accepted Cordova option can be passed through after `--`.
 - `--release`: Create a Cordova release build
 - `--verbose`: Show Cordova debug output
 - `--yarn`: Use [Yarn](https://yarnpkg.com) instead of NPM to run the `build` script
+- `--parse-json`: During `env`, if an environment variable's value is parsable JSON, it will be a proper object in `.env.ts`
 
 > Note: Yarn is automatically used instead of NPM is the environment variable `NGX_PACKAGE_MANAGER` is set to `yarn` or
 > if the current project was generated with ngX-Rocket using Yarn option (option is saved in `.yo-rc.json`).

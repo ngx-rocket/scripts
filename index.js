@@ -175,9 +175,11 @@ class NgxScriptsCli {
     };
 
     if (!options.fast) {
-      const buildOptions = ['run', 'build'].concat(
-        options.yarn ? [] : ['-s', '--']
-      );
+      const buildOptions = [
+        'run',
+        'build',
+        ...(options.yarn ? [] : ['-s', '--'])
+      ];
       buildOptions.push(`--base-href=${options['base-href']}`);
 
       if (options.dev) {
@@ -185,8 +187,7 @@ class NgxScriptsCli {
       }
 
       if (options.configuration) {
-        buildOptions.push('--configuration');
-        buildOptions.push(options.configuration);
+        buildOptions.push('--configuration', options.configuration);
       }
 
       if (options.app) {

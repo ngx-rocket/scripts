@@ -1,3 +1,15 @@
+## [5.1.1](https://github.com/ngx-rocket/scripts/compare/5.1.0...5.1.1) (2021-07-20)
+
+
+### chore
+
+* update deps ([7e8a836](https://github.com/ngx-rocket/scripts/commit/7e8a83625a351f5684c1b75e961504734f17b7dd))
+
+
+### BREAKING CHANGES
+
+* Requires Node >= 12
+
 # [5.1.0](https://github.com/ngx-rocket/scripts/compare/5.0.0...5.1.0) (2021-03-12)
 
 

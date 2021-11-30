@@ -1,3 +1,5 @@
+## [5.1.2](https://github.com/ngx-rocket/scripts/compare/5.1.1...5.1.2) (2021-11-30)
+
 ## [5.1.1](https://github.com/ngx-rocket/scripts/compare/5.1.0...5.1.1) (2021-07-20)
 
 

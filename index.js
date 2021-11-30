@@ -1,4 +1,5 @@
 const path = require('path');
+const process = require('process');
 const child = require('child_process');
 const fs = require('fs-extra');
 const chalk = require('chalk');

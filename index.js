@@ -232,7 +232,8 @@ class NgxScriptsCli {
           let androidApkPath = `platforms/android/app/build/outputs/bundle/${
             options.release ? 'release' : 'debug'
           }`;
-          if (fs.existsSync(androidApkPath)) {
+
+          if (!fs.existsSync(androidApkPath)) {
             // For cordova-android < 10 compatibility
             androidApkPath = `platforms/android/app/build/outputs/apk/${
               options.release ? 'release' : 'debug'
@@ -280,6 +281,7 @@ class NgxScriptsCli {
 
   _copy(src, dest) {
     try {
+      console.log({ src })
       child.execSync(`${isWin ? 'xcopy /S /Y' : 'cp -Rf'} ${src} ${dest}`, {
         stdio: 'ignore'
       });

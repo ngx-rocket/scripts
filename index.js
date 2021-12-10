@@ -229,9 +229,16 @@ class NgxScriptsCli {
           fs.ensureDirSync(options.copy);
           let copied = false;
 
-          let androidApkPath = `platforms/android/app/build/outputs/apk/${
+          let androidApkPath = `platforms/android/app/build/outputs/bundle/${
             options.release ? 'release' : 'debug'
           }`;
+          if (fs.existsSync(androidApkPath)) {
+            // For cordova-android < 10 compatibility
+            androidApkPath = `platforms/android/app/build/outputs/apk/${
+              options.release ? 'release' : 'debug'
+            }`;
+          }
+
           if (!fs.existsSync('platforms/android/app/build')) {
             // For cordova-android < 7 compatibility
             androidApkPath = 'platforms/android/build/outputs/apk';
@@ -239,7 +246,7 @@ class NgxScriptsCli {
 
           const androidPath = `${androidApkPath}/*-${
             options.release ? 'release' : 'debug'
-          }*.apk`;
+          }*.*`;
           copied = copied || this._copy(androidPath, options.copy);
           copied =
             copied ||

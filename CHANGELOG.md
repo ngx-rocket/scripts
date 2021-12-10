@@ -1,3 +1,10 @@
+# [5.2.0](https://github.com/ngx-rocket/scripts/compare/5.1.2...5.2.0) (2021-12-10)
+
+
+### Features
+
+* add support for cordova-android 10 ([edb0454](https://github.com/ngx-rocket/scripts/commit/edb04546653e40501fd5e217586ece85c11b92dd))
+
 ## [5.1.2](https://github.com/ngx-rocket/scripts/compare/5.1.1...5.1.2) (2021-11-30)
 
 ## [5.1.1](https://github.com/ngx-rocket/scripts/compare/5.1.0...5.1.1) (2021-07-20)

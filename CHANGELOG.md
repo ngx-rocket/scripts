@@ -1,3 +1,10 @@
+## [5.2.1](https://github.com/ngx-rocket/scripts/compare/5.2.0...5.2.1) (2021-12-10)
+
+
+### Bug Fixes
+
+* incorrect android build path ([0d4374e](https://github.com/ngx-rocket/scripts/commit/0d4374eb9670b8a4ae29144e0b6fe1112cce1258))
+
 # [5.2.0](https://github.com/ngx-rocket/scripts/compare/5.1.2...5.2.0) (2021-12-10)
 
 

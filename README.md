@@ -54,7 +54,7 @@ Any accepted Cordova option can be passed through after `--`.
 - `--yarn`: Use [Yarn](https://yarnpkg.com) instead of NPM to run the `build` script
 - `--parse-json`: During `env`, if an environment variable's value is parsable JSON, it will be a proper object in `.env.ts`
 
-> Note: Yarn is automatically used instead of NPM is the environment variable `NGX_PACKAGE_MANAGER` is set to `yarn` or
+> Note: Yarn is automatically used instead of NPM if the environment variable `NGX_PACKAGE_MANAGER` is set to `yarn` or
 > if the current project was generated with ngX-Rocket using Yarn option (option is saved in `.yo-rc.json`).
 
 #### Examples

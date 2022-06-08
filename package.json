@@ -41,9 +41,9 @@
     "minimist": "^1.2.5"
   },
   "devDependencies": {
-    "semantic-release": "^18.0.1",
-    "semantic-release-npm-github": "^2.0.0",
-    "xo": "^0.47.0"
+    "semantic-release": "^19.0.2",
+    "semantic-release-npm-github": "^3.0.0",
+    "xo": "^0.49.0"
   },
   "engines": {
     "node": ">=12.14.1"
@@ -55,7 +55,8 @@
       "unicorn/no-array-reduce": "off",
       "unicorn/prefer-module": "off",
       "unicorn/no-array-for-each": "off",
-      "unicorn/prefer-object-from-entries": "off"
+      "unicorn/prefer-object-from-entries": "off",
+      "complexity": "off"
     }
   },
   "prettier": {

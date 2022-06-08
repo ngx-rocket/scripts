@@ -281,7 +281,7 @@ class NgxScriptsCli {
 
   _copy(src, dest) {
     try {
-      console.log({ src })
+      console.log({src});
       child.execSync(`${isWin ? 'xcopy /S /Y' : 'cp -Rf'} ${src} ${dest}`, {
         stdio: 'ignore'
       });

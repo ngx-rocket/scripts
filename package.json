@@ -43,7 +43,7 @@
   "devDependencies": {
     "semantic-release": "^19.0.2",
     "semantic-release-npm-github": "^3.0.0",
-    "xo": "^0.51.0"
+    "xo": "^0.53.1"
   },
   "engines": {
     "node": ">=12.14.1"
@@ -56,7 +56,9 @@
       "unicorn/prefer-module": "off",
       "unicorn/no-array-for-each": "off",
       "unicorn/prefer-object-from-entries": "off",
-      "complexity": "off"
+      "complexity": "off",
+      "unicorn/prefer-node-protocol": "off",
+      "unicorn/switch-case-braces": "off"
     }
   },
   "prettier": {

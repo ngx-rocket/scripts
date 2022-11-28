@@ -1,3 +1,15 @@
+## [5.2.3](https://github.com/ngx-rocket/scripts/compare/5.2.2...5.2.3) (2022-11-28)
+
+
+### chore
+
+* update min node version ([16b06f5](https://github.com/ngx-rocket/scripts/commit/16b06f5769f3326d47bec83c9621494aa95a2274))
+
+
+### BREAKING CHANGES
+
+* Minimum supported Node.js version is now >=14
+
 ## [5.2.2](https://github.com/ngx-rocket/scripts/compare/5.2.1...5.2.2) (2022-08-24)
 
 ## [5.2.1](https://github.com/ngx-rocket/scripts/compare/5.2.0...5.2.1) (2021-12-10)
